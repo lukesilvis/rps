@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    
+    function computerPlay() {
+        let choose = ['ROCK', 'PAPER', 'SCISSORS'];
+        return choose[Math.floor(Math.random() * 3)]
+    }
+
+    function playRound (playerSelection, computerSelection) {
+        let user = playerSelection.toUpperCase();
+        let comp = computerSelection;
+
+        if (user == 'ROCK') {
+            if (comp == 'ROCK') {
+                return "Draw!"
+            }
+            else if (comp == 'PAPER') {
+                return "You lose! Paper beats rock."
+            }
+            else {
+                return "You win! Rock beats scissors."
+            }
+        }
+        else if (user == 'PAPER') {
+            if (comp == 'PAPER') {
+                return "Draw!"
+            }
+            else if (comp == 'SCISSORS') {
+                return 'You lose! Scissors beats paper.'
+            }
+            else {
+                return 'You win! Paper beats rock.'
+            }
+        }
+        else {
+            if (comp == 'SCISSORS') {
+                return 'Draw!'
+            }
+            else  if (comp == 'ROCK') {
+                return 'You lose! Rock beats scissors.'
+            }
+            else {
+                return 'You win! Scissors beats paper'
+            }
+        }
+
+    }
+
+    function game() {
+        let playerScore = 0;
+        let compScore = 0;
+        let rounds = 5;
+        let result;
+        let i;
+
+        for (i = 0; i < rounds; i++) {
+
+            result = playRound(prompt('Rock, Paper, Scissors?', ''), computerPlay());
+
+            if (result.includes("win")) {
+            playerScore += 1;
+            }
+            else if (result.includes("lose")) {
+            compScore += 1;
+            }
+            
+            alert(result);
+            alert("Score: Player - " + playerScore + ", Computer - " + compScore);
+            console.log("Score: Player - " + playerScore + ", Computer - " + compScore)
+        }
+        if (playerScore > compScore) {
+            alert("You win!");
+            return console.log("You win!")
+        } 
+        else if (compScore > playerScore) {
+            alert("You lose!");
+            return console.log("You lose!")
+        }
+        else {
+            alert("Draw");
+            return console.log("Draw")
+        }
+    }
+
+    game();
+
+  </script>
+</body>
+</html>
